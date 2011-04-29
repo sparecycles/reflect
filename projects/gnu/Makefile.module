@@ -1,0 +1,23 @@
+# vim:set syntax=make:
+
+-include $(patsubst %.c, %.d, $(patsubst %.cc, %.d, $(SOURCES)))
+
+CC_OBJECTS  := $(patsubst %.c,  %.o, $(filter %.c,  $(SOURCES)))
+CXX_OBJECTS := $(patsubst %.cc, %.o, $(filter %.cc, $(SOURCES)))
+OBJECTS := $(CC_OBJECTS) $(CXX_OBJECTS)
+
+$(module) : $(module).so
+.PHONY : $(module)
+
+ifeq ($(MACHINE),Darwin)
+LDFLAGS_module := -dynamiclib -Wl,-flat_namespace -Wl,-undefined -Wl,suppress
+else
+LDFLAGS_module = -shared 
+endif
+
+$(module).so : $(OBJECTS)
+	$(CXX) $(CFLAGS) $(CXXFLAGS) $(LDFLAGS) $(LDFLAGS_module) $^ $(LDLIBS) -lc -o $@
+
+ALL_TARGETS += $(module).so
+ALL_SOURCES += $(SOURCES)
+ALL_OBJECTS += $(OBJECTS)

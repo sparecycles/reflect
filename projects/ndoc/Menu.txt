@@ -1,0 +1,173 @@
+Format: 1.4
+
+
+Title: Reflect
+SubTitle: Serialization and Scripting for C++
+
+Footer: &amp;copy; 2008 Adam Freidin
+
+# You can add a timestamp to your documentation like one of these:
+# Timestamp: Generated on month day, year
+# Timestamp: Updated mm/dd/yyyy
+# Timestamp: Last updated mon day
+#
+#   m     - One or two digit month.  January is "1"
+#   mm    - Always two digit month.  January is "01"
+#   mon   - Short month word.  January is "Jan"
+#   month - Long month word.  January is "January"
+#   d     - One or two digit day.  1 is "1"
+#   dd    - Always two digit day.  1 is "01"
+#   day   - Day with letter extension.  1 is "1st"
+#   yy    - Two digit year.  2006 is "06"
+#   yyyy  - Four digit year.  2006 is "2006"
+#   year  - Four digit year.  2006 is "2006"
+
+# These are indexes you deleted, so Natural Docs will not add them again
+# unless you remove them from this line.
+
+Don't Index: Variables
+
+
+# --------------------------------------------------------------------------
+# 
+# Cut and paste the lines below to change the order in which your files
+# appear on the menu.  Don't worry about adding or removing files, Natural
+# Docs will take care of that.
+# 
+# You can further organize the menu by grouping the entries.  Add a
+# "Group: [name] {" line to start a group, and add a "}" to end it.
+# 
+# You can add text and web links to the menu by adding "Text: [text]" and
+# "Link: [name] ([URL])" lines, respectively.
+# 
+# The formatting and comments are auto-generated, so don't worry about
+# neatness when editing the file.  Natural Docs will clean it up the next
+# time it is run.  When working with groups, just deal with the braces and
+# forget about the indentation and comments.
+# 
+# --------------------------------------------------------------------------
+
+
+File: Overview  (no auto-title, Readme.txt)
+
+Group: Reflection  {
+
+   File: Signature  (include/reflect/Signature.h)
+   File: Reflection.h  (include/reflect/Reflection.h)
+   File: Reflection.hpp  (include/reflect/Reflection.hpp)
+   File: ReflectExport  (include/reflect/config/ReflectExport.h)
+   File: Variant  (include/reflect/Variant.h)
+   Text: -- Static --
+   File: Type  (include/reflect/Type.h)
+   File: Type.hpp  (no auto-title, include/reflect/Type.hpp)
+   File: EnumType  (include/reflect/EnumType.h)
+   File: EnumType.hpp  (include/reflect/EnumType.hpp)
+   File: PrimitiveTypes.h  (include/reflect/PrimitiveTypes.h)
+   File: ObjectType  (include/reflect/ObjectType.h)
+   File: ObjectType.hpp  (no auto-title, include/reflect/ObjectType.hpp)
+   File: StructType  (include/reflect/StructType.h)
+   File: StructType.hpp  (no auto-title, include/reflect/StructType.hpp)
+   Text: -- Dynamic --
+   File: Dynamic  (include/reflect/Dynamic.h)
+   File: Class  (no auto-title, include/reflect/Class.h)
+   File: Class.hpp  (no auto-title, include/reflect/Class.hpp)
+   File: autocast  (include/reflect/autocast.h)
+   }  # Group: Reflection
+
+Group: Persistent  {
+
+   File: Persistent  (include/reflect/Persistent.h)
+   File: PersistentClass  (include/reflect/PersistentClass.h)
+   File: PersistentClass.hpp  (no auto-title, include/reflect/PersistentClass.hpp)
+   File: PropertyPath  (include/reflect/PropertyPath.h)
+   Text: -- Property --
+   File: Property  (include/reflect/Property.h)
+   File: DataProperty  (include/reflect/DataProperty.h)
+   File: ArrayProperty  (include/reflect/ArrayProperty.h)
+   File: MapProperty  (include/reflect/MapProperty.h)
+   Text: -- Property Implementations --
+   File: AccessorAccessProperty  (include/reflect/property/AccessorAccessProperty.h)
+   File: AccessorDirectProperty  (include/reflect/property/AccessorDirectProperty.h)
+   File: AccessorIndirectProperty  (include/reflect/property/AccessorIndirectProperty.h)
+   File: AccessorProperty  (include/reflect/property/AccessorProperty.h)
+   File: BaseClassProperty  (include/reflect/property/BaseClassProperty.h)
+   File: DirectArrayProperty  (include/reflect/property/DirectArrayProperty.h)
+   File: DirectDataProperty  (include/reflect/property/DirectDataProperty.h)
+   File: DirectMapProperty  (include/reflect/property/DirectMapProperty.h)
+   File: DirectVectorProperty  (include/reflect/property/DirectVectorProperty.h)
+   File: VariantProperty  (include/reflect/property/VariantProperty.h)
+   }  # Group: Persistent
+
+Group: Utility  {
+
+   File: Context<Type>  (include/reflect/utility/Context.h)
+   File: SaveLoad.h  (include/reflect/utility/SaveLoad.h)
+   }  # Group: Utility
+
+Group: Function  {
+
+   File: CreateFunction  (include/reflect/function/Function.hpp)
+   File: Function  (include/reflect/function/Function.h)
+   File: FunctionSignature.hpp  (include/reflect/function/FunctionSignature.hpp)
+   }  # Group: Function
+
+Group: Execute  {
+
+   File: Application  (include/reflect/execute/Application.h)
+   File: ApplicationClass  (include/reflect/execute/ApplicationClass.h)
+   File: ApplicationClass::DescriptionHelper  (include/reflect/execute/ApplicationClass.hpp)
+   }  # Group: Execute
+
+Group: Serialize  {
+
+   File: Reflector  (include/reflect/Reflector.h)
+   File: InputStream  (include/reflect/InputStream.h)
+   File: OutputStream  (include/reflect/OutputStream.h)
+   Text: -- Core Interface --
+   File: Serializer  (include/reflect/Serializer.h)
+   File: Deserializer  (include/reflect/Deserializer.h)
+   File: SerializationTag  (include/reflect/SerializationTag.h)
+   Text: -- Implementation --
+   File: StandardSerializer  (include/reflect/serialize/StandardSerializer.h)
+   File: StandardDeserializer  (include/reflect/serialize/StandardDeserializer.h)
+   Text: -- Utility --
+   File: CompositeSerializer  (include/reflect/serialize/CompositeSerializer.h)
+   File: CompositeDeserializer  (include/reflect/serialize/CompositeDeserializer.h)
+   Text: -- Modified --
+   File: ShallowSerializer  (include/reflect/serialize/ShallowSerializer.h)
+   File: ShallowDeserializer  (include/reflect/serialize/ShallowDeserializer.h)
+   }  # Group: Serialize
+
+Group: String  {
+
+   File: BlockString  (include/reflect/string/BlockString.h)
+   File: ConstString  (include/reflect/string/ConstString.h)
+   File: Fragment  (include/reflect/string/Fragment.h)
+   File: MutableString  (include/reflect/string/MutableString.h)
+   File: SharedString  (include/reflect/string/SharedString.h)
+   File: StringBlock  (include/reflect/string/StringBlock.h)
+   File: StringPool  (include/reflect/string/StringPool.h)
+   }  # Group: String
+
+Group: Testing  {
+
+   File: Test  (include/reflect/test/Test.h)
+   }  # Group: Testing
+
+Group: SpiderMonkey  {
+
+   File: JavaScript  (no auto-title, include/reflect_js/JavaScript.h)
+   }  # Group: SpiderMonkey
+
+Group: Browse Index  {
+
+   Index: Index
+   Class Index: Classes
+   Constant Index: Constants
+   File Index: Files
+   Function Index: Functions
+   Macro Index: Macros
+   Member Index: Members
+   Type Index: Types
+   }  # Group: Browse Index
+

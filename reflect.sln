@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "reflect", "projects\windows\msvc\reflect\reflect.vcproj", "{174A051C-0799-486B-9E5C-AFC6E048A12C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "spidermonkey", "projects\windows\msvc\spidermonkey\spidermonkey.vcproj", "{6AC0422B-FE6B-465D-8C22-7C6027938135}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "reflect_js", "projects\windows\msvc\reflect_js\reflect_js.vcproj", "{0F065B39-40EE-4558-830E-D6757464D867}"
+	ProjectSection(ProjectDependencies) = postProject
+		{174A051C-0799-486B-9E5C-AFC6E048A12C} = {174A051C-0799-486B-9E5C-AFC6E048A12C}
+		{6AC0422B-FE6B-465D-8C22-7C6027938135} = {6AC0422B-FE6B-465D-8C22-7C6027938135}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "refract", "projects\windows\msvc\refract\refract.vcproj", "{2FD5301E-204D-450A-906B-F28A13BD15C5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{174A051C-0799-486B-9E5C-AFC6E048A12C} = {174A051C-0799-486B-9E5C-AFC6E048A12C}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+		ReleaseAMD64|Win32 = ReleaseAMD64|Win32
+		ReleaseItanium|Win32 = ReleaseItanium|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{174A051C-0799-486B-9E5C-AFC6E048A12C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{174A051C-0799-486B-9E5C-AFC6E048A12C}.Debug|Win32.Build.0 = Debug|Win32
+		{174A051C-0799-486B-9E5C-AFC6E048A12C}.Release|Win32.ActiveCfg = Release|Win32
+		{174A051C-0799-486B-9E5C-AFC6E048A12C}.Release|Win32.Build.0 = Release|Win32
+		{174A051C-0799-486B-9E5C-AFC6E048A12C}.ReleaseAMD64|Win32.ActiveCfg = Release|Win32
+		{174A051C-0799-486B-9E5C-AFC6E048A12C}.ReleaseAMD64|Win32.Build.0 = Release|Win32
+		{174A051C-0799-486B-9E5C-AFC6E048A12C}.ReleaseItanium|Win32.ActiveCfg = Release|Win32
+		{174A051C-0799-486B-9E5C-AFC6E048A12C}.ReleaseItanium|Win32.Build.0 = Release|Win32
+		{6AC0422B-FE6B-465D-8C22-7C6027938135}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6AC0422B-FE6B-465D-8C22-7C6027938135}.Debug|Win32.Build.0 = Debug|Win32
+		{6AC0422B-FE6B-465D-8C22-7C6027938135}.Release|Win32.ActiveCfg = Release|Win32
+		{6AC0422B-FE6B-465D-8C22-7C6027938135}.Release|Win32.Build.0 = Release|Win32
+		{6AC0422B-FE6B-465D-8C22-7C6027938135}.ReleaseAMD64|Win32.ActiveCfg = Release|Win32
+		{6AC0422B-FE6B-465D-8C22-7C6027938135}.ReleaseAMD64|Win32.Build.0 = Release|Win32
+		{6AC0422B-FE6B-465D-8C22-7C6027938135}.ReleaseItanium|Win32.ActiveCfg = Release|Win32
+		{6AC0422B-FE6B-465D-8C22-7C6027938135}.ReleaseItanium|Win32.Build.0 = Release|Win32
+		{0F065B39-40EE-4558-830E-D6757464D867}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0F065B39-40EE-4558-830E-D6757464D867}.Debug|Win32.Build.0 = Debug|Win32
+		{0F065B39-40EE-4558-830E-D6757464D867}.Release|Win32.ActiveCfg = Release|Win32
+		{0F065B39-40EE-4558-830E-D6757464D867}.Release|Win32.Build.0 = Release|Win32
+		{0F065B39-40EE-4558-830E-D6757464D867}.ReleaseAMD64|Win32.ActiveCfg = Release|Win32
+		{0F065B39-40EE-4558-830E-D6757464D867}.ReleaseAMD64|Win32.Build.0 = Release|Win32
+		{0F065B39-40EE-4558-830E-D6757464D867}.ReleaseItanium|Win32.ActiveCfg = Release|Win32
+		{0F065B39-40EE-4558-830E-D6757464D867}.ReleaseItanium|Win32.Build.0 = Release|Win32
+		{2FD5301E-204D-450A-906B-F28A13BD15C5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2FD5301E-204D-450A-906B-F28A13BD15C5}.Debug|Win32.Build.0 = Debug|Win32
+		{2FD5301E-204D-450A-906B-F28A13BD15C5}.Release|Win32.ActiveCfg = Release|Win32
+		{2FD5301E-204D-450A-906B-F28A13BD15C5}.Release|Win32.Build.0 = Release|Win32
+		{2FD5301E-204D-450A-906B-F28A13BD15C5}.ReleaseAMD64|Win32.ActiveCfg = Release|Win32
+		{2FD5301E-204D-450A-906B-F28A13BD15C5}.ReleaseAMD64|Win32.Build.0 = Release|Win32
+		{2FD5301E-204D-450A-906B-F28A13BD15C5}.ReleaseItanium|Win32.ActiveCfg = Release|Win32
+		{2FD5301E-204D-450A-906B-F28A13BD15C5}.ReleaseItanium|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,28 @@
+# vim:set syntax=make:
+
+CXX := g++
+CC := gcc
+CPPFLAGS := -I./include
+C_ARCH = -m32
+CFLAGS := -g -fPIC -fvisibility=hidden $(C_ARCH)
+CXXFLAGS = $(CFLAGS)
+LDFLAGS :=
+MACHINE=$(shell uname)
+ifeq ($(MACHINE),Darwin)
+LDFLAGS := -dynamic
+# remove for less fun.
+CFLAGS += -m64
+else
+LDFLAGS := -Wl,-export-dynamic
+endif
+LDLIBS := -ldl
+
+ALL_TARGETS := 
+ALL_SOURCES := 
+ALL_OBJECTS :=
+
+%.d: %.cc
+	- $(CC) -MM $(CPPFLAGS) -DXP_UNIX $< | sed -e "s|.*\.o|$(@:.d=.o) $@|" -e "s|:|: Makefile |" > $@ 2> /dev/null
+
+%.d: %.c
+	- $(CC) -MM $(CPPFLAGS) -DXP_UNIX $< 2> /dev/null | sed -e "s|.*\.o|$(@:.d=.o) $@|" -e "s|:|: Makefile |" > $@

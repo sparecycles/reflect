@@ -1,0 +1,17 @@
+#!/bin/sh
+
+mkdir -p ./doc/reflect-docs/
+
+perl ext/naturaldocs/NaturalDocs \
+ --input . \
+ --exclude-input ext \
+ --exclude-input build \
+ --exclude-input bin \
+ --exclude-input objects \
+ --exclude-input projects \
+ --exclude-input ndoc \
+ --exclude-input doc \
+ --output HTML ./doc/reflect-docs/ \
+ --style style \
+ --project ./projects/ndoc/ \
+ $@

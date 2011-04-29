@@ -1,0 +1,14 @@
+# vim:set syntax=make:
+
+-include $(SOURCES:.cc=.d)
+
+CC_OBJECTS  := $(patsubst %.c,  %.o, $(filter %.c,  $(SOURCES)))
+CXX_OBJECTS := $(patsubst %.cc, %.o, $(filter %.cc, $(SOURCES)))
+OBJECTS := $(CC_OBJECTS) $(CXX_OBJECTS)
+
+$(program) : $(CC_OBJECTS) $(CXX_OBJECTS)
+	$(CXX) $(CFLAGS) $(CXXFLAGS) $(LDFLAGS) $^ $(LDLIBS) -o $@
+
+ALL_TARGETS += $(program)
+ALL_SOURCES += $(SOURCES)
+ALL_OBJECTS += $(OBJECTS)
