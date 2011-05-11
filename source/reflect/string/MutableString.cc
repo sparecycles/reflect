@@ -262,7 +262,7 @@ const MutableString &MutableString::operator +=(char c)
 	return *this += s;
 }
 
-namespace {
+namespace internals {
 void SerializeMutableString(const MutableString *in, MutableString *out, Reflector &reflector)
 {
 	if(reflector.Serializing())
@@ -292,5 +292,5 @@ void SerializeMutableString(const MutableString *in, MutableString *out, Reflect
 
 DEFINE_STATIC_REFLECTION(reflect::string::MutableString, "mutable_string")
 {
-	SerializeWith<&reflect::string::SerializeMutableString>();
+	SerializeWith<&reflect::string::internals::SerializeMutableString>();
 }

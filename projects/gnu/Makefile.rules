@@ -4,14 +4,12 @@ CXX := g++
 CC := gcc
 CPPFLAGS := -I./include
 C_ARCH = -m32
-CFLAGS := -g -fPIC -fvisibility=hidden $(C_ARCH)
+CFLAGS := -g -fPIC $(C_ARCH)
 CXXFLAGS = $(CFLAGS)
 LDFLAGS :=
 MACHINE=$(shell uname)
 ifeq ($(MACHINE),Darwin)
 LDFLAGS := -dynamic
-# remove for less fun.
-CFLAGS += -m64
 else
 LDFLAGS := -Wl,-export-dynamic
 endif

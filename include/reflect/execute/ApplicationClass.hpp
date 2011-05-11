@@ -41,7 +41,7 @@ struct ApplicationClass::DescriptionHelper : public Class::DescriptionHelper<App
 } }
 
 #define DEFINE_APPLICATION(name_) \
-  namespace { \
+  namespace reflect { namespace internals { \
 	class REFLECT_UNIQUENAME(Application) : public reflect::execute::Application \
 	{ \
 		DECLARE_REFLECTION(reflect::execute::Application) \
@@ -50,7 +50,7 @@ struct ApplicationClass::DescriptionHelper : public Class::DescriptionHelper<App
 	\
 	DEFINE_REFLECTION(REFLECT_UNIQUENAME(Application), name_) { + Executable; } \
 	\
-  } \
-  int REFLECT_UNIQUENAME(Application)::Run(int argc, char *argv[])
+  } }\
+  int REFLECT_UNIQUENAME(reflect::internals::Application)::Run(int argc, char *argv[])
 
 #endif

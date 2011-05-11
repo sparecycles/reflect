@@ -132,7 +132,7 @@ ConstString::const_iterator ConstString::end() const
 	return data() + size();
 }
 
-namespace {
+namespace internals {
 void SerializeConstString(const ConstString *in, ConstString *out, Reflector &reflector)
 {
 	if(reflector.Serializing())
@@ -158,5 +158,5 @@ DEFINE_STATIC_REFLECTION(reflect::string::ConstString, "const_string")
 	+ Concrete;
 	+ ConversionFrom<const char *>();
 
-	SerializeWith<&reflect::string::SerializeConstString>();
+	SerializeWith<&reflect::string::internals::SerializeConstString>();
 }

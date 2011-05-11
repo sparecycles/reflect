@@ -4,17 +4,17 @@
 #include <reflect/string/ConstString.h>
 #include <reflect/string/SharedString.h>
 
-namespace {
+namespace reflect { namespace internals {
 
 void VoidSerialize(const void *, void *, reflect::Reflector &)
 {
 }
 
-}
+} }
 
 DEFINE_STATIC_REFLECTION(void, "void")
 {
-	SerializeWith<&VoidSerialize>();
+	SerializeWith<&reflect::internals::VoidSerialize>();
 	reflect::TypeOf<void>()->SetParent(0);
 }
 

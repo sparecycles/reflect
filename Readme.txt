@@ -12,7 +12,7 @@ What Reflect is and why you want to use it.
 Topic: Features
 
 Reflect is a complete C++ RTTI framework.
-Reflect allows you to 
+Reflect allows you to
 
  - inspect types;
  - serialize, 
