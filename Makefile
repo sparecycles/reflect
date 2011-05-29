@@ -1,10 +1,22 @@
 include projects/gnu/Makefile.rules
 
-all : reflect reflect_tests reflect_js doc
+all : reflect reflect_tests doc 
 
 SOURCES:=$(wildcard source/reflect/*.cc source/reflect/*/*.cc)
 program:=reflect
 include projects/gnu/Makefile.program
+
+# v8r module ---
+SOURCES:=$(wildcard source/v8r/*.cc)
+module:=v8r
+include projects/gnu/Makefile.module 
+V8R_CPPFLAGS += -I./ext/v8/include
+V8R_CFLAGS = $(OS_CFLAGS) $(C_ARCH)
+LDLIBS = -L./ext/v8
+LDFLAGS = -lv8 -lv8preparser -lreadline
+$(OBJECTS) $(OBJECTS:.o=.d) : CPPFLAGS += $(V8R_CPPFLAGS)
+$(OBJECTS) $(OBJECTS:.o=.d) : CFLAGS += $(V8R_CFLAGS)
+# --- end javascript module
 
 # javascript module ---
 SOURCES:=$(filter-out %js.c %jscpucfg.c %jskwgen.c,$(wildcard source/reflect_js/*.cc ext/js/src/*.c))
@@ -56,6 +68,9 @@ test_v : reflect reflect_tests
 
 js_test : reflect reflect_js
 	./reflect --load ./reflect_js.so --execute reflect_test::RunTests 
+
+v8_test : reflect v8r
+	./reflect --load ./v8r.so --load ./ext/v8 --execute v8r::Shell 
 
 debug_js_test : reflect reflect_js
 	pyclewn --args "--args reflect --load ./reflect_js.so --execute reflect_js::Test"

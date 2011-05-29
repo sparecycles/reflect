@@ -66,7 +66,7 @@ GCC_VERSION := $(shell gcc -v 2>&1 | grep version | awk '{ print $$3 }')
 GCC_LIST:=$(sort 2.91.66 $(GCC_VERSION) )
 
 ifeq (2.91.66, $(firstword $(GCC_LIST)))
-CFLAGS+= -DGCC_OPT_BUG
+#CFLAGS+= -DGCC_OPT_BUG
 endif
 endif
 endif
