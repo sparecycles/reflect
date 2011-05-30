@@ -64,8 +64,10 @@ public:
 	// property named in a subclass.
     void RegisterProperty(const char *name, const Property *);
 
-	// Function: Properties
+	// Function: GetPropertyMap
 	// Const accessor for the class <PropertyMap>.
+	// This is distinct from the non-const accessor <Properties> which
+        // creates the map if it doesn't yet exist.
     const PropertyMap *GetPropertyMap() const;
     
 	// Function: Properties
