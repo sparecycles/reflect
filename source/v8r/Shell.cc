@@ -1,9 +1,9 @@
 #include <reflect/PersistentClass.hpp>
 #include <reflect/Persistent.h>
+#include <reflect/string/ConstString.h>
 #include <reflect/execute/ApplicationClass.hpp>
 #include <v8.h>
 #include <readline/readline.h>
-#include "ObjectWrap.h"
 #include <cmath>
 
 namespace reflect { namespace v8r {
@@ -55,6 +55,28 @@ struct Accessor {
   }
 };
 
+bool ConvertValueToVariant(Variant &variant, v8::Handle<v8::Value> value) 
+{
+  if(value->IsNumber()) {
+    if(value->IsInt32()) variant = Variant::FromValue(value->Int32Value());
+    else if(value->IsUint32()) variant = Variant::FromValue(value->Uint32Value());
+    else variant = Variant::FromValue(value->NumberValue());
+    return true;
+  } else if(value->IsString()) {
+    v8::String::Utf8Value utf8_value(value);
+    variant = Variant::FromValue(reflect::string::ConstString(*utf8_value));
+    return true;
+  }
+  return false;
+}
+
+static inline Variant operator %(v8::Handle<v8::Value> value, const autocast_token &)
+{
+    Variant variant;
+    ConvertValueToVariant(variant, value);
+    return variant; 
+}
+
 struct Method {
   static v8::Handle<v8::Value> call(const v8::Arguments &args) {
     const function::Function *function = 
@@ -70,6 +92,9 @@ struct Method {
     );
     function::Parameters params(function);
     Variant result;
+    for(int i = 0; i < args.Length(); i++) {
+      params.const_ref(args[i] % autocast, i);
+    }
     function->Call(Variant::FromRef(*self), params, result);
     return v8::Number::New(result.AsValue<double>());
   }
@@ -111,6 +136,8 @@ public:
   Point(float x_ = 10, float y_ = 42) : x(x_), y(y_) {}
   float x, y;
   float mag() { return sqrt(x*x + y*y); }
+  float sum(int i) { return x + y + i; }
+  void show(reflect::string::ConstString name) { printf("%s: %g %g\n", name.c_str(), x, y); }
   reflect::string::String name;
 };
 
@@ -122,7 +149,10 @@ DEFINE_REFLECTION(Point, "Point") {
      ("y", &Point::y)
      ("name", &Point::name)
      ;
-   Functions("mag", &Point::mag)
+   Functions
+     ("mag", &Point::mag)
+     ("sum", &Point::sum)
+     ("show", &Point::show)
      ;
 }
 
