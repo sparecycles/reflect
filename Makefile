@@ -2,6 +2,10 @@ include projects/gnu/Makefile.rules
 
 all : reflect reflect_tests doc 
 
+.PHONY : gyp
+gyp :
+	gyp --debug=general --debug=variables --depth=. --generator-output=. --toplevel-dir=. projects/gyp/reflect.gyp
+
 SOURCES:=$(wildcard source/reflect/*.cc source/reflect/*/*.cc)
 program:=reflect
 include projects/gnu/Makefile.program
